@@ -1,0 +1,102 @@
+[
+  {
+    "competency": "Problem Solving",
+    "question": "Tell me about a time you solved a difficult technical problem.",
+    "situation": "Our production recommendation service started returning stale results hours after a deployment.",
+    "task": "I was on-call and needed to diagnose and fix the issue before the morning business peak.",
+    "action": "I traced logs to a misconfigured cache TTL introduced in the new deployment — it was set to 24h instead of 5m. I rolled back the config, wrote a hotfix with the correct value, and added a validation test to the deployment pipeline.",
+    "result": "Service recovered within 20 minutes. The pipeline guard prevented the same class of error from recurring. Added to post-mortem documentation.",
+    "level": "mid",
+    "follow_up": "How did you communicate the incident to stakeholders?"
+  },
+  {
+    "competency": "Teamwork",
+    "question": "Describe a situation where you had to collaborate with a difficult teammate.",
+    "situation": "A senior developer on my team consistently dismissed junior members' ideas in code reviews, causing low morale.",
+    "task": "As an informal team lead, I needed to address this without escalating to management prematurely.",
+    "action": "I had a private 1-on-1 with them, acknowledged their expertise, and explained the impact of their communication style. I suggested a structured review checklist so feedback stayed objective.",
+    "result": "The teammate adopted the checklist. Review cycles became more constructive. Two junior members who had been disengaged became active contributors within a month.",
+    "level": "mid",
+    "follow_up": "What would you have done if the behaviour hadn't changed?"
+  },
+  {
+    "competency": "Leadership",
+    "question": "Tell me about a time you led a project under tight deadlines.",
+    "situation": "Our team was asked to integrate a third-party payment API in 5 days before a product launch.",
+    "task": "I was assigned tech lead for the integration despite the team being unfamiliar with the API.",
+    "action": "I divided work into parallel tracks — one person on API auth, one on webhook handling, one on error states. I ran daily 15-minute standups and unblocked blockers in real time. I also negotiated with product to defer non-critical error scenarios to a follow-up sprint.",
+    "result": "Integration shipped on day 4. Launch happened on schedule. The deferred items were completed in the next sprint with zero customer impact.",
+    "level": "senior",
+    "follow_up": "How did you prioritise which error scenarios to defer?"
+  },
+  {
+    "competency": "Conflict Resolution",
+    "question": "Give an example of a time you disagreed with your manager.",
+    "situation": "My manager wanted to use a NoSQL database for a feature that I believed needed strong relational integrity.",
+    "task": "I needed to either align with the decision or make a compelling technical case for an alternative.",
+    "action": "I prepared a short written comparison — schema complexity, query patterns, data consistency requirements — and requested 20 minutes to walk through it. I acknowledged the valid reasons for NoSQL (scalability) and proposed a hybrid approach: relational for the transactional core, NoSQL for the activity feed.",
+    "result": "Manager approved the hybrid design. The relational core prevented three categories of data inconsistency bugs identified during QA. Manager later cited it as the right call in a team retrospective.",
+    "level": "mid",
+    "follow_up": "What would you have done if your manager still disagreed after your case?"
+  },
+  {
+    "competency": "Adaptability",
+    "question": "Tell me about a time you had to learn a new technology quickly.",
+    "situation": "Mid-project, the client switched the required cloud platform from AWS to IBM Cloud with two weeks to go.",
+    "task": "I needed to migrate our deployment setup and learn IBM Cloud services without delaying delivery.",
+    "action": "I spent the first two days on IBM Cloud documentation and completed the relevant learning path on IBM Skills. I identified service equivalences (S3→COS, Lambda→IBM Functions) and created a migration checklist. I paired with a teammate to validate each step.",
+    "result": "Migration completed in 8 days — 6 days ahead of the deadline. I also documented the process for the team, which became a reusable runbook.",
+    "level": "junior",
+    "follow_up": "What was the hardest part of the switch?"
+  },
+  {
+    "competency": "Initiative",
+    "question": "Describe a time you improved a process without being asked.",
+    "situation": "Our team's manual QA regression suite took 3 hours per release, blocking deployments.",
+    "task": "There was no assigned owner for test automation, but the bottleneck was affecting the whole team.",
+    "action": "I volunteered to automate the top 20 highest-risk test cases using Playwright in my spare time over two weeks. I got informal buy-in from my manager, demoed after the first 10 tests were done, and got official sprint time allocated for the remainder.",
+    "result": "Regression suite time dropped from 3 hours to 18 minutes. Deployment frequency increased from weekly to twice-weekly. The test suite became the team standard.",
+    "level": "mid",
+    "follow_up": "How did you decide which test cases to automate first?"
+  },
+  {
+    "competency": "Communication",
+    "question": "Tell me about a time you explained a complex technical concept to a non-technical audience.",
+    "situation": "Stakeholders were pushing back on a database migration project because they didn't understand the risk of not doing it.",
+    "task": "I needed to explain technical debt and legacy system risk to a VP with no engineering background.",
+    "action": "I created a one-page visual analogy comparing our codebase to a building with a crumbling foundation — safe today but risky to extend. I quantified the risk: three production incidents in the past quarter traced to the legacy schema. I avoided jargon and focused on business impact.",
+    "result": "VP approved the migration budget in the same meeting. The project was completed the following quarter, eliminating that class of incidents.",
+    "level": "senior",
+    "follow_up": "How do you adjust your communication style for different audiences?"
+  },
+  {
+    "competency": "Failure & Learning",
+    "question": "Tell me about a time you failed and what you learned.",
+    "situation": "I underestimated the complexity of a feature and committed to a deadline I couldn't meet.",
+    "task": "I had to manage the fallout — both technically completing the work and communicating the delay to the team.",
+    "action": "As soon as I recognised the gap (day 3 of 5), I immediately told my manager rather than waiting. I presented a revised timeline with justification and offered to descope lower-priority sub-features. I worked extra hours to minimise the delay.",
+    "result": "Feature shipped 2 days late. Customer impact was minimal due to early communication and partial release. I now break tasks into daily checkpoints and flag risk at the first sign, not the last.",
+    "level": "junior",
+    "follow_up": "How has this changed how you estimate tasks today?"
+  },
+  {
+    "competency": "Prioritisation",
+    "question": "Describe a time you had to manage multiple priorities simultaneously.",
+    "situation": "I was simultaneously handling a production bug, a feature deadline, and onboarding a new team member.",
+    "task": "All three were time-sensitive — I needed to triage without dropping any.",
+    "action": "I triaged by impact: production bug first (customer-facing). I timeboxed the bug investigation to 90 minutes with a clear escalation path if unsolved. Delegated an onboarding task to a senior teammate for one day. Communicated the feature timeline risk to the PM with a revised date.",
+    "result": "Bug fixed in 70 minutes. New member onboarded on schedule. Feature delivered one day late with PM agreement. No customer escalation.",
+    "level": "mid",
+    "follow_up": "What frameworks or tools do you use to manage your priorities?"
+  },
+  {
+    "competency": "Customer Focus",
+    "question": "Tell me about a time you went beyond expectations to help a user.",
+    "situation": "A key client reported that our data export feature was generating corrupted CSVs affecting their downstream pipeline.",
+    "task": "It was reported at 5pm on a Friday — outside normal support hours.",
+    "action": "I volunteered to investigate immediately. Root cause: Unicode characters in one column were breaking the delimiter. I fixed the encoding logic, wrote a migration script for previously corrupted exports, and sent the client a corrected file set with an explanation and apology.",
+    "result": "Client replied the same evening, grateful for the speed. They expanded their contract the following quarter, citing our support responsiveness as a key reason.",
+    "level": "mid",
+    "follow_up": "How do you balance urgency for individual clients against team workload?"
+  }
+]

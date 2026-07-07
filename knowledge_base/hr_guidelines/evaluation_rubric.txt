@@ -1,0 +1,61 @@
+INTERVIEW EVALUATION RUBRIC — COMPETENCY FRAMEWORK
+====================================================
+
+SCORING SCALE
+1 — No evidence / below expectations
+2 — Partial evidence / developing
+3 — Meets expectations / competent
+4 — Exceeds expectations / strong
+5 — Exceptional / role model
+
+─────────────────────────────────────────────────────
+TECHNICAL COMPETENCIES
+─────────────────────────────────────────────────────
+
+Problem Solving
+  5: Breaks down ambiguous problems methodically; identifies edge cases proactively; optimises beyond first solution.
+  3: Identifies correct approach; solves the main problem; misses some edge cases.
+  1: Unable to form a structured approach; guesses.
+
+Code Quality
+  5: Clean, readable, well-named; considers maintainability and testability by default.
+  3: Working code; some readability issues; tests mentioned but not always implemented.
+  1: Working code only; no consideration of quality.
+
+System Design
+  5: Identifies scale requirements; decomposes into services; discusses trade-offs of multiple options.
+  3: Proposes a reasonable architecture; limited trade-off analysis.
+  1: High-level only; no component breakdown.
+
+─────────────────────────────────────────────────────
+BEHAVIOURAL COMPETENCIES
+─────────────────────────────────────────────────────
+
+STAR Response Quality
+  5: Specific, concise STAR with quantified Result; directly answers the competency probed.
+  3: Complete STAR structure; result present but not quantified; minor tangents.
+  1: Vague; missing Task or Result; mostly hypothetical ("I would...").
+
+Communication
+  5: Clear, structured; adapts depth to audience; listens actively; no jargon without explanation.
+  3: Generally clear; occasional unclear explanations; answers the question asked.
+  1: Disorganised; difficult to follow; fails to address the question.
+
+Collaboration & Teamwork
+  5: Specific examples of elevating teammates; navigates conflict constructively; credits others.
+  3: Works well in teams; one solid example; limited evidence of proactive collaboration.
+  1: Vague team references; positions self as sole contributor.
+
+Growth Mindset
+  5: Proactively seeks feedback; clear examples of adapting after failure; learns across domains.
+  3: Accepts feedback; learns from stated mistakes; limited proactive examples.
+  1: Defensive about failures; no evidence of learning from feedback.
+
+─────────────────────────────────────────────────────
+RED FLAGS
+─────────────────────────────────────────────────────
+- Answers entirely hypothetical ("I would...") rather than specific ("I did...")
+- Unable to recall concrete examples under probing
+- Blames teammates or manager without self-reflection
+- Cannot explain technical choices beyond surface level
+- Dismisses alternative approaches without reasoning
