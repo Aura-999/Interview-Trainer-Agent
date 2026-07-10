@@ -1,1 +1,18 @@
+Problem Statement : INTERVIEW TRAINER AGENT
+
+The Challenge 
+Building an effective Interview Trainer Agent requires retrieving accurate, up-to-date, role-specific questions and HR guidelines from diverse sources while keeping the RAG pipeline grounded and free of hallucinated content. Personalizing question sets based on varying resumes, roles, and experience levels adds complexity, especially when parsing unstructured resume data. The agent must balance technical and soft-skill assessments equally, generate genuinely useful model answers and feedback, and operate within the resource limits of IBM Cloud Lite and IBM Granite—while ensuring fairness, data privacy, and scalability as user demand grows. 
+
+The Objective 
+Build an AI-powered Interview Trainer Agent that delivers personalized interview preparation and career readiness guidance for job seekers, freshers, and working professionals. The solution should:
+Interview Data RAG Retrieval – Fetch and summarize role-specific questions, industry expectations, and HR guidelines from recruitment portals, professional networks, and company interview databases.
+Mock Interview & Feedback – Allow users to attempt questions via text, voice, or video, and provide instant feedback on answer quality, tone, and structure.
+Skill-Focused Preparation – Support both technical assessment (role/domain-specific problems) and soft-skill assessment .
+Multi-Agent System –
+Question Retrieval Agent (fetches role-specific and behavioral questions)
+Answer Generation Agent (creates model answers and sample responses)
+Feedback & Improvement Agent (evaluates user responses and suggests improvements)
+Visualization Dashboard – Show preparation progress, strong/weak skill areas, and readiness score across technical and behavioral rounds.
+
+
 
