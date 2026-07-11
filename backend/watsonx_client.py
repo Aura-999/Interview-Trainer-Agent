@@ -12,7 +12,6 @@ import os
 from functools import lru_cache
 
 from dotenv import load_dotenv
-from fastapi import HTTPException
 from ibm_watsonx_ai import APIClient, Credentials
 from ibm_watsonx_ai.foundation_models import ModelInference
 from ibm_watsonx_ai.metanames import GenTextParamsMetaNames as Params
@@ -24,6 +23,22 @@ from rag_engine import get_cached_response, make_cache_key, set_cached_response
 load_dotenv()
 
 _PLACEHOLDER_KEYS = {"your_api_key_here", "", None}
+
+
+class WatsonxError(Exception):
+    """
+    Raised when the watsonx service is unavailable, misconfigured, or a call fails.
+
+    Replaces the old FastAPI HTTPException now that this code runs in-process inside
+    Streamlit instead of behind a FastAPI server — status_code/detail are kept as
+    attributes so any calling code that wants them still can, but str(e) alone gives
+    a full, displayable message (e.g. for st.error()).
+    """
+
+    def __init__(self, detail: str, status_code: int = 503):
+        self.detail = detail
+        self.status_code = status_code
+        super().__init__(detail)
 
 
 def _credentials_configured() -> bool:
@@ -54,7 +69,7 @@ BASE_PARAMS = {
 @lru_cache(maxsize=1)
 def _get_api_client() -> APIClient:
     if not _credentials_configured():
-        raise HTTPException(
+        raise WatsonxError(
             status_code=503,
             detail=(
                 "IBM watsonx credentials are not configured. "
@@ -69,7 +84,7 @@ def _get_api_client() -> APIClient:
         return APIClient(creds)
     except InvalidCredentialsError as e:
         _get_api_client.cache_clear()   # don't cache a failed client
-        raise HTTPException(
+        raise WatsonxError(
             status_code=503,
             detail=f"IBM watsonx authentication failed: invalid API key. Check your .env. ({e})",
         ) from e
@@ -86,7 +101,7 @@ def _get_model(task: str) -> ModelInference:
 
 # Only retry on transient errors — never on auth/config failures (retrying won't fix a bad key)
 @retry(
-    retry=retry_if_not_exception_type((HTTPException, InvalidCredentialsError)),
+    retry=retry_if_not_exception_type((WatsonxError, InvalidCredentialsError)),
     stop=stop_after_attempt(3),
     wait=wait_exponential(multiplier=1, min=2, max=10),
     reraise=True,
@@ -114,24 +129,24 @@ def generate(prompt: str, task: str, cache_key_parts: list[str] | None = None) -
         if cached:
             return cached  # zero tokens consumed
 
-    # 2. Call Granite — let HTTPException propagate cleanly to FastAPI
+    # 2. Call Granite — let WatsonxError propagate cleanly up to the caller
     try:
         result = _call_granite(prompt, task)
-    except HTTPException:
+    except WatsonxError:
         raise
     except InvalidCredentialsError as e:
         _get_api_client.cache_clear()
-        raise HTTPException(
+        raise WatsonxError(
             status_code=503,
             detail=f"IBM watsonx authentication failed: {e}",
         ) from e
     except RetryError as e:
-        raise HTTPException(
+        raise WatsonxError(
             status_code=503,
             detail=f"IBM watsonx call failed after retries: {e.last_attempt.exception()}",
         ) from e
     except Exception as e:
-        raise HTTPException(
+        raise WatsonxError(
             status_code=503,
             detail=f"IBM watsonx generation error: {e}",
         ) from e
